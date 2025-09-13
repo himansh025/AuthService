@@ -4,6 +4,7 @@ import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.security.Keys;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.stereotype.Component;
 
 import javax.crypto.SecretKey;
 import java.nio.charset.StandardCharsets;
@@ -12,19 +13,20 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.function.Function;
 
+@Component
 public class JwtUtil {
     @Value("${spring.jwt}")
-    private static String Secret;
+    private String Secret;
 
-    private static SecretKey getSignInkey() {
+    private SecretKey getSignInkey() {
         return Keys.hmacShaKeyFor(Secret.getBytes(StandardCharsets.UTF_8));
     }
 
     private static final long expirationTime = 1000 * 60 * 60;
 
 
-    //    create toekn with payload
-    public static String createToken(Map<String, Object> payload, String email) {
+    //    create token with payload
+    public String createToken(Map<String, Object> payload, String email) {
         return Jwts.builder()
                 .subject(email)
                 .issuedAt(new Date())
@@ -33,7 +35,7 @@ public class JwtUtil {
                 .compact();
     }
 
-    //    create token with email
+    // create token with email
     public String createToken(String email) {
         return createToken(new HashMap<>(), email);
     }
@@ -47,7 +49,7 @@ public class JwtUtil {
                 .getPayload();
     }
 
-    //    take token and a function to extract something like expDate,Email
+    // take token and a function to extract something like expDate,Email
     public <T> T extractClaims(String token, Function<Claims, T> claimResolver) {
         final Claims claims = extractAllPayloads(token);
         return claimResolver.apply(claims);
@@ -76,7 +78,6 @@ public class JwtUtil {
         Claims claim = extractAllPayloads(token);
         return (Object) claim.get(payloadKey);
     }
-
 //   Map<String,Object> user= new HashMap()<>;
 //   user.put("email","abc@gmail,com");
 //   user.put("phnomuber","345345");

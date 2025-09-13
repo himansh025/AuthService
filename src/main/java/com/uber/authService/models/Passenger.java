@@ -15,7 +15,7 @@ import java.util.List;
 @AllArgsConstructor
 @Builder
 @Entity
-@JsonIgnoreProperties({"hibernateLazyInitializer","handler","bookings"})
+@JsonIgnoreProperties({"hibernateLazyInitializer", "handler", "bookings"})
 public class Passenger extends BaseModel {
 
     @Column(nullable = false)
@@ -25,7 +25,7 @@ public class Passenger extends BaseModel {
     private String email;
 
     @Column(nullable = false)
-    private  String phoneNumber;
+    private String phoneNumber;
 
     @Column(nullable = false)
     private String password;
