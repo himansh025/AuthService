@@ -2,7 +2,7 @@ plugins {
 	id 'java'
 	id 'org.springframework.boot' version '3.5.6-SNAPSHOT'
 	id 'io.spring.dependency-management' version '1.1.7'
-//	id 'maven-publish'
+	id 'maven-publish'
 }
 
 group = 'com.uber'
@@ -23,7 +23,7 @@ configurations {
 }
 
 
-//
+
 //publishing{
 //	publications{
 //		mavenJava(MavenPublication){
@@ -32,14 +32,15 @@ configurations {
 //	}
 //	repositories{
 //		maven{
-//			url = uri("C:/Users/himan/Desktop/entity/entity")
+//			url = uri("C:/Users/himan/Desktop/Uber-Entity")
 //		}
+//
 //	}
 //}
 
 repositories {
 	mavenCentral()
-//	mavenLocal()
+	mavenLocal()
 	maven { url = 'https://repo.spring.io/snapshot' }
 }
 
@@ -57,7 +58,7 @@ dependencies {
 	implementation 'io.jsonwebtoken:jjwt-api:0.12.3'
 	runtimeOnly 'io.jsonwebtoken:jjwt-impl:0.12.3'
 	runtimeOnly 'io.jsonwebtoken:jjwt-jackson:0.12.3'
-//	implementation 'com.uber:entity:0.0.1-SNAPSHOT'
+	implementation 'com.example:Uber-Entity:0.0.2-SNAPSHOT'
 }
 
 tasks.named('test') {
