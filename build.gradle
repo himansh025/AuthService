@@ -24,19 +24,7 @@ configurations {
 
 
 
-//publishing{
-//	publications{
-//		mavenJava(MavenPublication){
-//			from components.java
-//		}
-//	}
-//	repositories{
-//		maven{
-//			url = uri("C:/Users/himan/Desktop/Uber-Entity")
-//		}
-//
-//	}
-//}
+
 
 repositories {
 	mavenCentral()
@@ -58,7 +46,7 @@ dependencies {
 	implementation 'io.jsonwebtoken:jjwt-api:0.12.3'
 	runtimeOnly 'io.jsonwebtoken:jjwt-impl:0.12.3'
 	runtimeOnly 'io.jsonwebtoken:jjwt-jackson:0.12.3'
-	implementation 'com.example:Uber-Entity:0.0.2-SNAPSHOT'
+	implementation 'com.example:Uber-Entity:0.0.3-SNAPSHOT'
 }
 
 tasks.named('test') {
